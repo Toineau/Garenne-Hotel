@@ -19,9 +19,9 @@ header {
 }
 
 .header-left img {
-  height: 45px;
-  width: 45px;
-  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  border-radius: 25%;
   object-fit: cover;
   box-shadow: 0 0 5px rgba(0,0,0,0.2);
 }
