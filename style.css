@@ -12,13 +12,13 @@ header {
   justify-content: space-between;
   align-items: center;
 }
-.logo {
+.header-left {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.logo img {
+.header-left img {
   height: 45px;
   width: 45px;
   border-radius: 50%;
