@@ -11,12 +11,14 @@ const rooms = [
   {id:184,name:'Chambre 184',price:70,free:true}
 ];
 const reviewsBase = [
-  {name:'Alice',rating:5,text:'Séjour parfait 🌿'},
+  {name:'Alice',rating:3,text:'Le personnel est souvent absent mais l'hôtel reste excellent. '},
   {name:'Marc',rating:4,text:'Très bon rapport qualité-prix !'},
   {name:'Sophie',rating:5,text:'La salle de jeux est super !'},
   {name:'Jean',rating:5,text:'Petit déjeuner excellent.'},
   {name:'Claire',rating:4,text:'Endroit calme et propre.'},
-  {name:'David',rating:5,text:'Accueil chaleureux 💚'}
+  {name:'David',rating:5,text:'Accueil chaleureux'}
+  {name:'Sofia',rating:2,text:'Un hôtel classique mais pas de petit déjeuner malheureusement'}
+  {name:'Jean Bave',rating:1,text:'On s'est mal occupé de moi, je me suis échapper. Jean Bave l'escargot du Marais'}
 ];
 
 // --- LocalStorage ---
