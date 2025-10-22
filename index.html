@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Garenne Hôtel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="Logo">
+    </div>
+    <h1>Garenne Hôtel</h1>
+    <button id="menu-btn">☰ Menu</button>
+    <nav id="menu">
+      <a href="#accueil">🏡 Accueil</a>
+      <a href="#chambres">🛏️ Chambres</a>
+      <a href="#reserver">📅 Réserver</a>
+      <a href="#avis">💬 Avis</a>
+      <a href="#galerie">📸 Galerie</a>
+      <a href="#infos">ℹ️ Infos</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="accueil">
+      <h2>Bienvenue à la Garenne Hôtel 🌳</h2>
+      <p>Un petit coin de calme et de nature à Arçais. Notre équipe vous accueille avec le sourire et veille à votre confort.</p>
+    </section>
+
+    <section id="chambres">
+      <h2>Nos chambres 🛏️</h2>
+      <div id="rooms"></div>
+    </section>
+
+    <section id="reserver">
+      <h2>Réserver 📅</h2>
+      <form id="booking-form">
+        <label>Type :</label>
+        <select id="type">
+          <option value="chambre">Chambre</option>
+          <option value="jeu">Salle de jeux</option>
+        </select>
+        <label>Nom :</label>
+        <input id="name" required>
+        <label>Date :</label>
+        <input type="date" id="date" required>
+        <label>Durée (nuits ou heures) :</label>
+        <input id="duration" required>
+        <button type="submit">Réserver</button>
+        <button type="button" id="show-bookings">Voir réservations</button>
+        <button type="button" id="clear-bookings">Effacer tout</button>
+      </form>
+    </section>
+
+    <section id="avis">
+      <h2>Avis clients 💬</h2>
+      <form id="review-form">
+        <input id="review-name" placeholder="Votre nom" required>
+        <select id="review-rating">
+          <option>5</option><option>4</option><option>3</option><option>2</option><option>1</option>
+        </select>
+        <textarea id="review-text" placeholder="Votre avis..." required></textarea>
+        <button type="submit">Envoyer</button>
+      </form>
+      <div id="reviews"></div>
+    </section>
+
+    <section id="galerie">
+      <h2>Galerie 📸</h2>
+      <div class="gallery">
+        <img src="accueil.png" alt="">
+        <img src="salledejeu.png" alt="">
+        <img src="sdb.png" alt="">
+      </div>
+    </section>
+
+    <section id="infos">
+      <h2>Infos pratiques ℹ️</h2>
+      <p><strong>Wi-Fi :</strong> Garenne.hôtel79<br>
+      <strong>Mot de passe :</strong> Arçais.Garennehôtel79</p>
+      <h3>🛁 Horaires de la salle de bain</h3>
+      <ul>
+        <li><strong>Chambre 181 (Staff):</strong> 8h00–8h45 / 18h45–19h30</li>
+        <li><strong>Chambre 182:</strong> 9h30–10h15 / 20h15–21h00</li>
+        <li><strong>Chambre 183:</strong> 8h45–9h30 / 19h30–20h15</li>
+        <li><strong>Chambre 184:</strong> 10h15–11h00 / 18h00–18h45</li>
+        <li><strong>Nettoyage:</strong> 11h–12h / 21h–22h</li>
+        <li><strong>Accès commun:</strong> 12h–18h / 22h–8h</li>
+      </ul>
+      
+      <h3>🎱 Horaires Salle de Jeux</h3>
+      <ul>
+        <li>Sous réservation de <strong>8h45 à 22h</strong></li>
+      </ul>
+    </section>
+    
+    <section id="contact">
+      <h2>Contactez–nous</h2>
+    </section>
+  </main>
+
+  <footer>© 2025 Garenne Hôtel</footer>
+  <script src="script.js"></script>
+</body>
+</html>

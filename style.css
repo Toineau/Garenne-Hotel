@@ -1,0 +1,91 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  background: #f9f7f4;
+  color: #2e2b26;
+}
+header {
+  background: #7fb685;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  margin: left;
+  max-height: 40px;
+  max-width: 40px;
+}
+#menu {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+#menu a {
+  display: block;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #2e2b26;
+}
+#menu a:hover { background: #f0ede9; }
+#menu-btn {
+  font-size: 20px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+section {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+  background: white;
+  margin-top: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  gap: 10px;
+}
+.gallery img {
+  width: 100%;
+  border-radius: 8px;
+}
+button {
+  background: #7fb685;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  margin-top: 5px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+button:hover { background: #6ca773; }
+input, select, textarea {
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #777;
+}
+.room {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 10px 0;
+  background: #fafafa;
+}
+
