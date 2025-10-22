@@ -6,9 +6,9 @@ menuBtn.onclick = () => menu.style.display = menu.style.display === 'block' ? 'n
 // --- Données ---
 const rooms = [
   {id:181,name:'Chambre 181 (Staff)',price:0,free:false},
-  {id:182,name:'Chambre 182',price:80,free:true},
+  {id:182,name:'Chambre 182',price:100,free:true},
   {id:183,name:'Chambre 183',price:120,free:true},
-  {id:184,name:'Chambre 184',price:70,free:true}
+  {id:184,name:'Chambre 184',price:150,free:true}
 ];
 const reviewsBase = [
   {name:'Alice',rating:3,text:'Le personnel est souvent absent mais l hôtel reste excellent. '},
