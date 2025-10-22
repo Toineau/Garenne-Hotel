@@ -16,9 +16,9 @@ const reviewsBase = [
   {name:'Sophie',rating:5,text:'La salle de jeux est super !'},
   {name:'Jean',rating:5,text:'Petit déjeuner excellent.'},
   {name:'Claire',rating:4,text:'Endroit calme et propre.'},
-  {name:'David',rating:5,text:'Accueil chaleureux'}
-  {name:'Sofia',rating:2,text:'Un hôtel classique mais pas de petit déjeuner malheureusement'}
-  {name:'Jean Bave',rating:1,text:'On s'est mal occupé de moi, je me suis échapper. Jean Bave l'escargot du Marais'}
+  {name:'David',rating:5,text:'Accueil chaleureux'},
+  {name:'Sofia',rating:2,text:'Un hôtel classique mais pas de petit déjeuner malheureusement'},
+  {name:'Jean Bave',rating:1,text:'On s'est mal occupé de moi, je me suis échapper. Jean Bave l'escargot du Marais'},
 ];
 
 // --- LocalStorage ---
