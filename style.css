@@ -12,11 +12,18 @@ header {
   justify-content: space-between;
   align-items: center;
 }
-
 .logo {
-  margin: left;
-  max-height: 40px;
-  max-width: 40px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
 }
 #menu {
   display: none;
