@@ -51,6 +51,10 @@ function bookRoom(id) {
       <input id="popup-name" type="text" required>
       <label>Date :</label>
       <input id="popup-date" type="date" required>
+      <label>Durée :</label>
+      <input id="popup-duration" type="number" required>
+      <label>Numéro de téléphone :</label>
+      <input id="phone" type="tel">
       <button id="popup-ok">Valider</button>
       <button id="popup-cancel">Annuler</button>
     </div>
@@ -60,6 +64,8 @@ function bookRoom(id) {
   document.getElementById('popup-ok').onclick = () => {
     const name = document.getElementById('popup-name').value;
     const date = document.getElementById('popup-date').value;
+    const date = document.getElementById('popup-duration').value;
+    const date = document.getElementById('phone').value;
     if (!name || !date) return alert('Merci de remplir tous les champs');
 
     bookings.push({
@@ -83,6 +89,7 @@ document.getElementById('booking-form').onsubmit=e=>{
   e.preventDefault();
   const type=document.getElementById('type').value;
   const name=document.getElementById('name').value;
+  const id=document.getElementById('id').value;
   const date=document.getElementById('date').value;
   const duration=document.getElementById('duration').value;
   bookings.push({type,guest:name,date,duration});
