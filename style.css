@@ -1,13 +1,13 @@
 body {
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
-  background: linear-gradient(to bottom, #40E0D0, #4682B4, #77DD77, #4682B4, #40E0D0);
+  background: linear-gradient(to bottom, #F18FFA, #4682B4, #77DD77, #4682B4, #F18FFA);
     background-size: 400% 400%;
     animation: colorChange 40s infinite alternate;
     color: #000;
 }
 header {
-  background: #40E0D0;
+  background: #F18FFA;
   color: white;
   padding: 10px 20px;
   display: flex;
