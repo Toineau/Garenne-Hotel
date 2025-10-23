@@ -38,16 +38,46 @@ function renderRooms() {
 renderRooms();
 
 // --- Réservations ---
-function bookRoom(id){
-  const room=rooms.find(r=>r.id===id);
-  const guest=prompt('Votre nom ?');
-  if(!guest) return;
-  const date=prompt('Date ? (AAAA-MM-JJ)');
-  bookings.push({type:'chambre',guest,room:room.id,name,date});
-  room.free=false;
-  localStorage.setItem('bookings',JSON.stringify(bookings));
-  renderRooms();
-  alert('Réservation enregistrée localement.');
+function bookRoom(id) {
+  const room = rooms.find(r => r.id === id);
+
+  // Création d'un mini pop-up HTML
+  const popup = document.createElement('div');
+  popup.className = 'popup';
+  popup.innerHTML = `
+    <div class="popup-content">
+      <h3>Réserver ${room.name}</h3>
+      <label>Votre nom :</label>
+      <input id="popup-name" type="text" required>
+      <label>Date :</label>
+      <input id="popup-date" type="date" required>
+      <button id="popup-ok">Valider</button>
+      <button id="popup-cancel">Annuler</button>
+    </div>
+  `;
+  document.body.appendChild(popup);
+
+  document.getElementById('popup-ok').onclick = () => {
+    const name = document.getElementById('popup-name').value;
+    const date = document.getElementById('popup-date').value;
+    if (!name || !date) return alert('Merci de remplir tous les champs');
+
+    bookings.push({
+      type: 'chambre',
+      guest: name,
+      room: room.name,
+      roomId: room.id,  // 🔹 ajoute le numéro de chambre
+      date
+    });
+
+    localStorage.setItem('bookings', JSON.stringify(bookings));
+    room.free = false;
+    renderRooms();
+    popup.remove();
+    alert(`Réservation enregistrée pour la ${room.name} le ${date} 🌿`);
+  };
+
+  document.getElementById('popup-cancel').onclick = () => popup.remove();
 }
 document.getElementById('booking-form').onsubmit=e=>{
   e.preventDefault();
