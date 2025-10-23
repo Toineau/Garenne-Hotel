@@ -49,12 +49,12 @@ function bookRoom(id) {
       <h3>Réserver ${room.name}</h3>
       <label>Votre nom :</label>
       <input id="popup-name" type="text" required>
-      <label>Date :</label>
+      <label>Date de début :</label>
       <input id="popup-date" type="date" required>
-      <label>Durée :</label>
-      <input id="popup-duration" type="number" required>
-      <label>Numéro de téléphone :</label>
-      <input id="phone" type="tel">
+      <label>Durée (en jours) :</label>
+      <input id="popup-duration" type="number" min="1" required>
+      <label>Numéro de téléphone (optionnel) :</label>
+      <input id="popup-phone" type="tel" placeholder="ex : 06 12 34 56 78">
       <button id="popup-ok">Valider</button>
       <button id="popup-cancel">Annuler</button>
     </div>
@@ -62,25 +62,36 @@ function bookRoom(id) {
   document.body.appendChild(popup);
 
   document.getElementById('popup-ok').onclick = () => {
-    const name = document.getElementById('popup-name').value;
+    const name = document.getElementById('popup-name').value.trim();
     const date = document.getElementById('popup-date').value;
     const duration = document.getElementById('popup-duration').value;
-    const phone = document.getElementById('phone').value;
-    if (!name || !date) return alert('Merci de remplir tous les champs');
+    const phone = document.getElementById('popup-phone').value.trim();
 
-    bookings.push({
-      type: 'chambre',
+    if (!name || !date || !duration) {
+      alert('Merci de remplir au moins le nom, la date et la durée.');
+      return;
+    }
+
+    const booking = {
       guest: name,
       room: room.name,
-      roomId: room.id,  // 🔹 ajoute le numéro de chambre
-      date
-    });
+      roomId: room.id, // numéro automatique
+      date,
+      duration,
+      phone: phone || 'Non renseigné'
+    };
 
+    bookings.push(booking);
     localStorage.setItem('bookings', JSON.stringify(bookings));
     room.free = false;
     renderRooms();
     popup.remove();
-    alert(`Réservation enregistrée pour la ${room.name} le ${b.date} pendant ${b.duration} avec le numéro ${b.phone} `);
+
+    alert(`Réservation enregistrée :
+- ${room.name}
+- Du ${date} pour ${duration} jour(s)
+- Au nom de ${name}
+- Téléphone : ${phone || 'Non renseigné'}`);
   };
 
   document.getElementById('popup-cancel').onclick = () => popup.remove();
@@ -98,9 +109,18 @@ document.getElementById('booking-form').onsubmit=e=>{
   alert('Réservation ajoutée !');
   e.target.reset();
 };
-document.getElementById('show-bookings').onclick=()=>{
-  if(!bookings.length)return alert('Aucune réservation');
-  alert(bookings.map(b=>`${b.guest} → ${b.type} ${b.id}  le ${b.date} pendant ${b.duration} avec le numéro ${b.phone}`).join('\\n'));
+document.getElementById('show-bookings').onclick = () => {
+  if (!bookings.length) return alert('Aucune réservation enregistrée.');
+
+  const message = bookings.map(b => 
+    `🛏️ ${b.room} (n°${b.roomId})
+👤 ${b.guest}
+📅 Date : ${b.date}
+⏱️ Durée : ${b.duration} jour(s)
+📞 Téléphone : ${b.phone}`
+  ).join('\n\n');
+
+  alert(message);
 };
 document.getElementById('clear-bookings').onclick=()=>{
   if(confirm('Effacer toutes les réservations ?')){
