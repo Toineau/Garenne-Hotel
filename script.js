@@ -80,7 +80,7 @@ function bookRoom(id) {
     room.free = false;
     renderRooms();
     popup.remove();
-    alert(`Réservation enregistrée pour la ${room.name} le ${date} pendant ${b.duration} avec le numéro ${b.phone} `);
+    alert(`Réservation enregistrée pour la ${room.name} le ${b.date} pendant ${b.duration} avec le numéro ${b.phone} `);
   };
 
   document.getElementById('popup-cancel').onclick = () => popup.remove();
@@ -100,7 +100,7 @@ document.getElementById('booking-form').onsubmit=e=>{
 };
 document.getElementById('show-bookings').onclick=()=>{
   if(!bookings.length)return alert('Aucune réservation');
-  alert(bookings.map(b=>`${b.guest} → ${b.type} ${b.id}  le ${b.date} ${b.duration} ${b.phone}`).join('\\n'));
+  alert(bookings.map(b=>`${b.guest} → ${b.type} ${b.id}  le ${b.date} pendant ${b.duration} avec le numéro ${b.phone}`).join('\\n'));
 };
 document.getElementById('clear-bookings').onclick=()=>{
   if(confirm('Effacer toutes les réservations ?')){
