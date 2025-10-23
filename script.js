@@ -43,7 +43,7 @@ function bookRoom(id){
   const guest=prompt('Votre nom ?');
   if(!guest) return;
   const date=prompt('Date ? (AAAA-MM-JJ)');
-  bookings.push({type:'chambre',guest,room:room.name,date});
+  bookings.push({type:'chambre',guest,room:room.id,name,date});
   room.free=false;
   localStorage.setItem('bookings',JSON.stringify(bookings));
   renderRooms();
