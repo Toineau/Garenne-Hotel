@@ -64,8 +64,8 @@ function bookRoom(id) {
   document.getElementById('popup-ok').onclick = () => {
     const name = document.getElementById('popup-name').value;
     const date = document.getElementById('popup-date').value;
-    const date = document.getElementById('popup-duration').value;
-    const date = document.getElementById('phone').value;
+    const duration = document.getElementById('popup-duration').value;
+    const phone = document.getElementById('phone').value;
     if (!name || !date) return alert('Merci de remplir tous les champs');
 
     bookings.push({
@@ -80,7 +80,7 @@ function bookRoom(id) {
     room.free = false;
     renderRooms();
     popup.remove();
-    alert(`Réservation enregistrée pour la ${room.name} le ${date} 🌿`);
+    alert(`Réservation enregistrée pour la ${room.name} le ${date} pendant ${b.duration} avec le numéro ${b.phone} `);
   };
 
   document.getElementById('popup-cancel').onclick = () => popup.remove();
@@ -92,6 +92,7 @@ document.getElementById('booking-form').onsubmit=e=>{
   const id=document.getElementById('id').value;
   const date=document.getElementById('date').value;
   const duration=document.getElementById('duration').value;
+  const phone=document.getElementById('phone').value;
   bookings.push({type,guest:name,date,duration});
   localStorage.setItem('bookings',JSON.stringify(bookings));
   alert('Réservation ajoutée !');
@@ -99,7 +100,7 @@ document.getElementById('booking-form').onsubmit=e=>{
 };
 document.getElementById('show-bookings').onclick=()=>{
   if(!bookings.length)return alert('Aucune réservation');
-  alert(bookings.map(b=>`${b.guest} → ${b.type} ${b.id}  le ${b.date}`).join('\\n'));
+  alert(bookings.map(b=>`${b.guest} → ${b.type} ${b.id}  le ${b.date} ${b.duration} ${b.phone}`).join('\\n'));
 };
 document.getElementById('clear-bookings').onclick=()=>{
   if(confirm('Effacer toutes les réservations ?')){
