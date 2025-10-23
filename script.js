@@ -92,7 +92,7 @@ document.getElementById('booking-form').onsubmit=e=>{
 };
 document.getElementById('show-bookings').onclick=()=>{
   if(!bookings.length)return alert('Aucune réservation');
-  alert(bookings.map(b=>`${b.guest} → ${b.type} le ${b.date}`).join('\\n'));
+  alert(bookings.map(b=>`${b.guest} → ${b.type} ${b.id}  le ${b.date}`).join('\\n'));
 };
 document.getElementById('clear-bookings').onclick=()=>{
   if(confirm('Effacer toutes les réservations ?')){
