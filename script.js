@@ -134,35 +134,63 @@ document.getElementById('booking-form').onsubmit = e => {
   e.target.reset();
 };
 
-document.getElementById('show-bookings').onclick = () => {
+function renderBookings() {
+  const container = document.getElementById('bookings-list');
   const bookings = JSON.parse(localStorage.getItem('bookings')) || [];
-  if (!bookings.length) return alert("Aucune réservation enregistrée.");
+  container.innerHTML = '';
 
-  // Construction du message selon le type
-  const message = bookings.map(b => {
+  if (!bookings.length) {
+    container.innerHTML = '<p>Aucune réservation enregistrée.</p>';
+    return;
+  }
+
+  bookings.forEach((b, i) => {
+    const div = document.createElement('div');
+    div.className = 'room';
     if (b.roomId) {
-      // Réservation de chambre
-      return `🏨 ${b.room} (n°${b.roomId})
-👤 ${b.guest}
-📅 Date : ${b.date}
-⏱️ Durée : ${b.duration} jour(s)
-📞 Téléphone : ${b.phone || 'Non renseigné'}`;
+      // Chambre
+      div.innerHTML = `
+        <b>🏨 ${b.room} (n°${b.roomId})</b><br>
+        👤 ${b.guest}<br>
+        📅 ${b.date}<br>
+        ⏱️ ${b.duration} jour(s)<br>
+        📞 ${b.phone || 'Non renseigné'}<br>
+        <button onclick="deleteBooking(${i})">🗑️ Supprimer</button>
+      `;
     } else {
-      // Réservation de jeu
-      return `🎱 Jeu : ${b.type}
-👤 ${b.guest}
-📅 Date : ${b.date}
-⏱️ Durée : ${b.duration}`;
+      // Jeu
+      div.innerHTML = `
+        <b>🎱 ${b.type}</b><br>
+        👤 ${b.guest}<br>
+        📅 ${b.date}<br>
+        ⏱️ ${b.duration}<br>
+        <button onclick="deleteBooking(${i})">🗑️ Supprimer</button>
+      `;
     }
-  }).join('\n\n──────────────────────\n\n');
+    container.appendChild(div);
+  });
+}
 
-  alert(message);
-};
-document.getElementById('clear-bookings').onclick=()=>{
-  if(confirm('Effacer toutes les réservations ?')){
-    bookings=[];localStorage.setItem('bookings','[]');
-    rooms.forEach(r=>{if(r.id!==181)r.free=true});
-    renderRooms();
+// Bouton “Voir réservations”
+document.getElementById('show-bookings').onclick = renderBookings;
+
+// Supprimer UNE réservation
+function deleteBooking(index) {
+  const bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+  if (!bookings[index]) return;
+
+  if (confirm(`Supprimer la réservation de ${bookings[index].guest} ?`)) {
+    bookings.splice(index, 1);
+    localStorage.setItem('bookings', JSON.stringify(bookings));
+    renderBookings(); // rafraîchir l’affichage
+  }
+}
+
+// Bouton “Effacer tout” (facultatif)
+document.getElementById('clear-bookings').onclick = () => {
+  if (confirm('Effacer toutes les réservations ?')) {
+    localStorage.removeItem('bookings');
+    renderBookings();
   }
 };
 
