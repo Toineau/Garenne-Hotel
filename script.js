@@ -96,27 +96,64 @@ function bookRoom(id) {
 
   document.getElementById('popup-cancel').onclick = () => popup.remove();
 }
-document.getElementById('booking-form').onsubmit=e=>{
+document.getElementById('booking-form').onsubmit = e => {
   e.preventDefault();
-  const type=document.getElementById('type').value;
-  const name=document.getElementById('name').value;
-  const date=document.getElementById('date').value;
-  const duration=document.getElementById('duration').value;
-  const phone=document.getElementById('phone').value;
-  localStorage.setItem('bookings',JSON.stringify(bookings));
-  alert('Réservation ajoutée !');
+
+  const type = document.getElementById('type').value;
+  const name = document.getElementById('name').value.trim();
+  const date = document.getElementById('date').value;
+  const duration = document.getElementById('duration').value;
+
+  if (!name || !date || !duration) {
+    alert("Merci de remplir tous les champs obligatoires.");
+    return;
+  }
+
+  // Charger les réservations existantes
+  let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+
+  // Créer la nouvelle réservation
+  const newBooking = {
+    type,        // type de jeu choisi
+    guest: name,
+    date,
+    duration
+  };
+
+  // Ajouter et sauvegarder
+  bookings.push(newBooking);
+  localStorage.setItem('bookings', JSON.stringify(bookings));
+
+  alert(`🎱 Réservation ajoutée :
+- Jeu : ${type}
+- Nom : ${name}
+- Date : ${date}
+- Durée : ${duration}`);
+
   e.target.reset();
 };
-document.getElementById('show-bookings').onclick = () => {
-  if (!bookings.length) return alert('Aucune réservation enregistrée.');
 
-  const message = bookings.map(b => 
-    `🛏️ ${b.room} (n°${b.roomId})
+document.getElementById('show-bookings').onclick = () => {
+  const bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+  if (!bookings.length) return alert("Aucune réservation enregistrée.");
+
+  // Construction du message selon le type
+  const message = bookings.map(b => {
+    if (b.roomId) {
+      // Réservation de chambre
+      return `🏨 ${b.room} (n°${b.roomId})
 👤 ${b.guest}
 📅 Date : ${b.date}
 ⏱️ Durée : ${b.duration} jour(s)
-📞 Téléphone : ${b.phone}`
-  ).join('\n\n');
+📞 Téléphone : ${b.phone || 'Non renseigné'}`;
+    } else {
+      // Réservation de jeu
+      return `🎱 Jeu : ${b.type}
+👤 ${b.guest}
+📅 Date : ${b.date}
+⏱️ Durée : ${b.duration}`;
+    }
+  }).join('\n\n──────────────────────\n\n');
 
   alert(message);
 };
