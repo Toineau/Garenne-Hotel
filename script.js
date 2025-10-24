@@ -100,11 +100,9 @@ document.getElementById('booking-form').onsubmit=e=>{
   e.preventDefault();
   const type=document.getElementById('type').value;
   const name=document.getElementById('name').value;
-  const id=document.getElementById('id').value;
   const date=document.getElementById('date').value;
   const duration=document.getElementById('duration').value;
   const phone=document.getElementById('phone').value;
-  bookings.push({type,guest:name,date,duration});
   localStorage.setItem('bookings',JSON.stringify(bookings));
   alert('Réservation ajoutée !');
   e.target.reset();
