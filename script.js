@@ -5,6 +5,10 @@ menuBtn.onclick = () => menu.style.display = menu.style.display === 'block' ? 'n
 
 // --- Données ---
 const rooms = [
+  {id:001,name:'Chambre 001 (avec salle de bain)',price:199,free:true},
+  {id:161,name:'Chambre 161 (annexe)',price:120,free:true},
+  {id:171,name:'Chambre 171 (annexe)',price:100,free:true},
+  {id:172,name:'Chambre 172 (annexe)',price:100,free:true},
   {id:181,name:'Chambre 181 (Staff)',price:0,free:false},
   {id:182,name:'Chambre 182',price:100,free:true},
   {id:183,name:'Chambre 183 (avec balcon)',price:120,free:true},
