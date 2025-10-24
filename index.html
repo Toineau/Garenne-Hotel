@@ -35,18 +35,21 @@
     </section>
 
     <section id="reserver">
-      <h2>Réserver 📅</h2>
+      <h2>Réserver la salle de Jeu 🎱</h2>
       <form id="booking-form">
         <label>Type :</label>
         <select id="type">
-          <option value="jeu">Salle de jeux</option>
+          <option value="jeu">Billard</option>
+          <option value="jeu">Tennis de Table</option>
+          <option value="jeu">BabyFoot</option>
+          <option value="jeu">Air Hockey</option>
         </select>
         <label>Nom :</label>
         <input id="name" required>
         <label>Date et heures:</label>
         <input type="datetime-local" id="date" required>
         <label>Durée en heures :</label>
-        <input type="temps" id="duration" required>
+        <input type="time" id="duration" required>
         <button type="submit">Réserver</button>
         <button type="button" id="show-bookings">Voir réservations</button>
         <button type="button" id="clear-bookings">Effacer tout</button>
