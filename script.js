@@ -17,6 +17,7 @@ const reviewsBase = [
   {name:'Jean',rating:5,text:'Petit déjeuner excellent.'},
   {name:'Claire',rating:4,text:'Endroit calme et propre.'},
   {name:'David',rating:5,text:'Accueil chaleureux'},
+  {name:'Jean Bave',rating:1,text:'On s est mal occupé de moi. Je me suis échappé. Jean Bave l escargot du Marais'},
 ];
 
 // --- LocalStorage ---
