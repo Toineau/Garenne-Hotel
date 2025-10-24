@@ -130,3 +130,14 @@ footer {
   border-radius: 8px;
   margin-right: 8px;
 }
+
+#bookings-list {
+  margin-top: 15px;
+}
+#bookings-list .room button {
+  margin-top: 5px;
+  background: #e57373;
+}
+#bookings-list .room button:hover {
+  background: #d32f2f;
+}
