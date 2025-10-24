@@ -39,15 +39,14 @@
       <form id="booking-form">
         <label>Type :</label>
         <select id="type">
-          <option value="chambre">Chambre</option>
           <option value="jeu">Salle de jeux</option>
         </select>
         <label>Nom :</label>
         <input id="name" required>
-        <label>Date :</label>
-        <input type="date" id="date" required>
-        <label>Durée (nuits ou heures) :</label>
-        <input id="duration" required>
+        <label>Date et heures:</label>
+        <input type="datetime-local" id="date" required>
+        <label>Durée en heures :</label>
+        <input type="temps" id="duration" required>
         <button type="submit">Réserver</button>
         <button type="button" id="show-bookings">Voir réservations</button>
         <button type="button" id="clear-bookings">Effacer tout</button>
